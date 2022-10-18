@@ -1,0 +1,110 @@
+<h1>Angular Event App</h1>
+
+<div class="input-bar">
+  <input
+    style="width: 100px"
+    type="text"
+    placeholder="Enter event title"
+    name="eventTitleName"
+    [(ngModel)]="eventTitle"
+    value="eventTitle"
+    (keydown.enter)="handleSubmit($event, eventTitle, eventName)"
+    (keyup.enter)="handleUpdate($event, eventTitle, eventName)"
+  />
+  <!-- <div class="input-bar">
+  <input
+    style="width: 100px"
+    type="text"
+    placeholder="Enter event title"
+    #eventTitle
+  /> -->
+  <input
+    type="text"
+    placeholder="Enter event name"
+    name="eventNames"
+    [(ngModel)]="eventName"
+    value="eventName"
+    (keydown.enter)="handleSubmit($event, eventTitle, eventName)"
+    (keyup.enter)="handleUpdate($event, eventTitle, eventName)"
+  />
+  <!-- <input type="text" placeholder="Enter event name" #eventName /> -->
+  <button
+    *ngIf="!editField"
+    class="submit-btn"
+    type="submit"
+    (click)="handleSubmit($event, eventTitle, eventName)"
+  >
+    Add
+  </button>
+  <button
+    *ngIf="editField"
+    class="submit-btn"
+    type="submit"
+    (click)="handleUpdate($event, eventTitle, eventName)"
+  >
+    Update
+  </button>
+  <!-- <button
+    *ngIf="!editField"
+    class="submit-btn"
+    type="submit"
+    #btnFocus [autofocus]="btnFocus.focus()"
+    (keydown.enter)="handleSubmit($event, eventTitle, eventName)"
+    (click)="handleSubmit($event, eventTitle, eventName)"
+  >
+    Add
+  </button>
+  <button
+    *ngIf="editField"
+    class="submit-btn"
+    type="submit"
+    #btnFocus [autofocus]="btnFocus.focus()"
+    (keydown.enter)="handleUpdate($event, eventTitle, eventName)"
+    (click)="handleUpdate($event, eventTitle, eventName)"
+  >
+    Update
+  </button> -->
+</div>
+
+<!-- (click)="
+  handleSubmit($event, eventTitle.value, eventName.value);
+  eventTitle.value = '';
+  eventName.value = ''
+" -->
+
+<div *ngFor="let list of lists; let i = index">
+  <span>{{ i + 1 }}</span>
+  <input type="checkbox" (change)="onInputChecked($event, i)" />
+  <strong
+    ><span
+      [ngStyle]="{
+        'text-decoration': list.complete ? 'line-through' : 'none'
+      }"
+      >{{ list.title }}:
+    </span></strong
+  >
+  <span
+    [ngStyle]="{
+      'text-decoration': list.complete ? 'line-through' : 'none'
+    }"
+    >{{ list.details }}.</span
+  >
+  <span
+    style="
+      color: green;
+      cursor: pointer;
+      margin-left: 10px;
+      font-style: italic;
+      font-weight: bolder;
+    "
+    (click)="handleEdit(i)"
+  >
+    i
+  </span>
+  <span
+    style="color: red; cursor: pointer; margin-left: 10px; font-weight: bolder"
+    (click)="handleDelete(i)"
+  >
+    x
+  </span>
+</div>
