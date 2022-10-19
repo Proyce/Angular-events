@@ -25,19 +25,19 @@ export class AppComponent {
       id: 1,
       title: "Study",
       details: "Go to the library to study",
-      complete: false
+      complete: false,
     },
     {
       id: 2,
       title: "Travel",
       details: "Go to the airport to travel",
-      complete: false
+      complete: false,
     },
     {
       id: 3,
       title: "Church",
       details: "Go to the Church to pray",
-      complete: false
+      complete: false,
     },
   ];
 
@@ -48,7 +48,7 @@ export class AppComponent {
         id: this.lists.length + 1,
         title: titleValue,
         details: nameValue,
-        complete: false
+        complete: false,
       });
       this.eventName = "";
       this.eventTitle = "";
