@@ -73,7 +73,7 @@ export class AppComponent {
     }
   }
 
-  onInputChecked(event: any, i) {
+  onInputChecked(event: any, i: number) {
     event.preventDefault();
     this.lists[i].complete = !this.lists[i].complete;
   }
